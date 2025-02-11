@@ -7,6 +7,7 @@ import Rating from '@mui/material/Rating';
 import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/material';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const theme = createTheme({
     components: {
@@ -29,6 +30,7 @@ const TourCard = ({tour}) => {
     return (
         <Grid size={{ xs: 3}}>
             <ThemeProvider theme={theme}>
+            <Link to={`/${tour.id}`} style={{ textDecoration: 'none' }}>
                 <Paper elevation={3}>
                     <img
                         src={tour.image}
@@ -73,6 +75,7 @@ const TourCard = ({tour}) => {
                         </Box>
                     </Box>
                 </Paper>
+            </Link>
             </ThemeProvider>
         </Grid>
     )
@@ -80,6 +83,7 @@ const TourCard = ({tour}) => {
 
 TourCard.propTypes = {
     tour: PropTypes.shape({
+        id: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         duration: PropTypes.string.isRequired,
